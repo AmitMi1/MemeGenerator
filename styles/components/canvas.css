@@ -21,6 +21,18 @@ canvas {
     background-color: var(--clr2);
     margin-inline-start: 20px;
 }
+.editor .inputs> button{
+    cursor: pointer;
+    /* aspect-ratio: 1/1; */
+    font-size: 30px;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+}
+.stroke-input, .fill-input{
+width: 50px;
+height: 50px;
+}
 
 .editor .inputs .text-input{
     grid-row:1;
@@ -30,6 +42,9 @@ canvas {
 .editor .inputs .add-line-btn{
     grid-row:2;
     grid-column: 1/span 1;
+    /* background-color: rgba(0, 0, 0, 0); */
+    /* border: none; */
+    /* background-image: url(/assets/img/add.svg); */
 }
 
 .editor .inputs .del-line-btn{
@@ -74,12 +89,12 @@ canvas {
 
 .editor .inputs .text-align-btn.left{
     grid-row:3;
-    grid-column: 2/span 1;
+    grid-column: 4/span 1;
 }
 
 .editor .inputs .text-align-btn.right{
     grid-row:3;
-    grid-column: 4/span 1;
+    grid-column: 2/span 1;
 }
 
 .editor .inputs .text-align-btn.center{

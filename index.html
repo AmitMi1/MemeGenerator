@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body onload="onInit()">
@@ -34,14 +37,18 @@
         <canvas class="image-canvas" width="400px" height="400px"></canvas>
         <div class="inputs">
             <input class="text-input" oninput="onSetLineText()" placeholder="Enter text here" type="text">
-            <button class="add-line-btn" onclick="onAddLine()">+</button>
-            <button class="font-inc-btn" onclick="onSetFontSize(+2)">A+</button>
-            <button class="font-dec-btn" onclick="onSetFontSize(-2)">A-</button>
-            <button class="switch-line-btn" onclick="onSwitchLine()">></button>
-            <button class="del-line-btn" onclick="onDeleteLine()">/</button>
-            <button class="text-align-btn right" onclick="onSetTextAlign('right')">L</button>
-            <button class="text-align-btn center" onclick="onSetTextAlign('center')">C</button>
-            <button class="text-align-btn left" onclick="onSetTextAlign('left')">R</button>
+            <button class="add-line-btn" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
+            <button class="font-inc-btn" onclick="onSetFontSize(+2)"><i class="fa-solid fa-maximize"></i></button>
+            <button class="font-dec-btn" onclick="onSetFontSize(-2)"><i class="fa-solid fa-minimize"></i></button>
+            <button class="switch-line-btn" onclick="onSwitchLine()"><i class="fa-solid fa-up-down"></i></button>
+            <button class="del-line-btn" onclick="onDeleteLine()"><i class="fa-solid fa-trash-can"></i></button>
+            <button class="text-align-btn left" onclick="onSetTextAlign('left')">
+                <i class="fa-solid fa-align-right"></i>
+            </button>
+            <button class="text-align-btn right" onclick="onSetTextAlign('right')"><i
+                    class="fa-solid fa-align-left"></i></button>
+            <button class="text-align-btn center" onclick="onSetTextAlign('center')"><i
+                    class="fa-solid fa-align-center"></i></button>
             <input value="#ffffff" class="fill-input" type="color" oninput="onSetColor(this.value,'fill')">
             <input class="stroke-input" type="color" oninput="onSetColor(this.value,'stroke')">
             <select onchange="onSetFontType(this.value)" class="font-input">
@@ -50,7 +57,8 @@
                 <option value="font3">Sans-serif</option>
             </select>
             <button class="download-btn" onclick="initDownload()" style="cursor: pointer;"><a class="download-btn-link"
-                    onclick="onDownload(this, event)" style="text-decoration: none; color: black;">=></a></button>
+                    onclick="onDownload(this, event)" style="text-decoration: none; color: black;"><i
+                        class="fa-solid fa-download"></i></a></button>
         </div>
     </section>
     <script src="js/services/memeService.js"></script>
