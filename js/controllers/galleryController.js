@@ -31,4 +31,7 @@ function renderGallery() {
         return `<img src="${img.url}" onclick="setImg(${img.id})" class="img-${img.id}">`
     })
     document.querySelector('.gallery-container').innerHTML = strHTMLs.join('')
+    setTimeout(() => {
+        gIsFirstRender = true
+    })
 }
