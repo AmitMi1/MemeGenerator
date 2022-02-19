@@ -1,0 +1,13 @@
+@font-face {
+    font-family: font1;
+    src: url(../../assets/font/impact.ttf);
+}
+
+@font-face {
+    font-family: font2;
+    src: url(../../assets/font/GideonRoman-Regular.ttf);
+}
+@font-face {
+    font-family: font3;
+    src: url(../../assets/font/OpenSans-Regular.ttf);
+}

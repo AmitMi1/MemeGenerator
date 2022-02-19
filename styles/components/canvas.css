@@ -1,0 +1,90 @@
+.editor {
+    /* min-height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100vw; */
+}
+
+canvas {
+    border-radius: 20px;
+    /* background-color: white; */
+    /* aspect-ratio: 1/1; */
+    /* background-image: url(../../assets/img/1.jpg); */
+}
+
+.editor .inputs{
+    display: grid;
+    gap: 5px;
+    grid-template-columns:1fr,1fr,1fr,1fr,1fr;
+    grid-template-rows: 1fr,1fr,1fr,1fr,1fr;
+    background-color: var(--clr2);
+    margin-inline-start: 20px;
+}
+
+.editor .inputs .text-input{
+    grid-row:1;
+    grid-column: 1/span 4;
+}
+
+.editor .inputs .add-line-btn{
+    grid-row:2;
+    grid-column: 1/span 1;
+}
+
+.editor .inputs .del-line-btn{
+    grid-row:2;
+    grid-column: 2/span 1;
+}
+
+.editor .inputs .font-inc-btn{
+    grid-row:2;
+    grid-column: 3/span 1;
+}
+
+.editor .inputs .font-dec-btn{
+    grid-row:2;
+    grid-column: 4/span 1;
+}
+
+.editor .inputs .switch-line-btn{
+    grid-row:3;
+    grid-column: 1/span 1;
+}
+
+.editor .inputs .font-input{
+    grid-row:5;
+    grid-column: 1/span 4;
+}
+
+.editor .inputs .stroke-input{
+    grid-row:4;
+    grid-column: 1/span 1;
+}
+
+.editor .inputs .fill-input{
+    grid-row:4;
+    grid-column: 2/span 1;
+}
+
+.editor .inputs .download-btn{
+    grid-row:4;
+    grid-column: 3/span 2;
+}
+
+.editor .inputs .text-align-btn.left{
+    grid-row:3;
+    grid-column: 2/span 1;
+}
+
+.editor .inputs .text-align-btn.right{
+    grid-row:3;
+    grid-column: 4/span 1;
+}
+
+.editor .inputs .text-align-btn.center{
+    grid-row:3;
+    grid-column: 3/span 1;
+}
+
+
