@@ -156,6 +156,7 @@ function _getGardient() {
 }
 
 function resizeCanvas() {
+    console.log(gIsFirstRender)
     const elContainer = document.querySelector('.gallery')
     // console.log(elContainer.offsetWidth)
     var viewPortWidth = document.documentElement.clientWidth
@@ -167,7 +168,6 @@ function resizeCanvas() {
         gCanvas.height = viewPortWidth * 0.7
     }
     if (!gIsFirstRender) {
-        console.log(gIsFirstRender)
         renderMeme()
     }
 }
