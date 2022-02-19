@@ -160,12 +160,15 @@ function resizeCanvas() {
     const elContainer = document.querySelector('.gallery')
     // console.log(elContainer.offsetWidth)
     var viewPortWidth = document.documentElement.clientWidth
-    if (viewPortWidth > 700) {
-        gCanvas.width = viewPortWidth * 0.3
-        gCanvas.height = viewPortWidth * 0.3
+    if (viewPortWidth > 1000) {
+        gCanvas.width = viewPortWidth * 0.325
+        gCanvas.height = viewPortWidth * 0.325
+    } else if (viewPortWidth > 740) {
+        gCanvas.width = viewPortWidth * 0.5
+        gCanvas.height = viewPortWidth * 0.5
     } else {
-        gCanvas.width = viewPortWidth * 0.7
-        gCanvas.height = viewPortWidth * 0.7
+        gCanvas.width = viewPortWidth * 0.725
+        gCanvas.height = viewPortWidth * 0.725
     }
     if (!gIsFirstRender) {
         renderMeme()

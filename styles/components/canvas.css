@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     /* width: 100vw; */
+   
 }
 
 canvas {
@@ -16,10 +17,12 @@ canvas {
 .editor .inputs{
     display: grid;
     gap: 5px;
-    grid-template-columns:1fr,1fr,1fr,1fr,1fr;
+    grid-template-columns:1fr,1fr,1fr,1fr;
     grid-template-rows: 1fr,1fr,1fr,1fr,1fr;
     background-color: var(--clr2);
     margin-inline-start: 20px;
+    padding: 10px;
+    border-radius: 20px;
 }
 .editor .inputs> button{
     cursor: pointer;
@@ -32,6 +35,13 @@ canvas {
 .stroke-input, .fill-input{
 width: 50px;
 height: 50px;
+}
+
+.text-input, .font-input{
+    height: 50px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 20px;
 }
 
 .editor .inputs .text-input{
@@ -84,7 +94,7 @@ height: 50px;
 
 .editor .inputs .download-btn{
     grid-row:4;
-    grid-column: 3/span 2;
+    grid-column: 3/span 1;
 }
 
 .editor .inputs .text-align-btn.left{
@@ -100,6 +110,15 @@ height: 50px;
 .editor .inputs .text-align-btn.center{
     grid-row:3;
     grid-column: 3/span 1;
+}
+
+.editor .inputs .share-btn{
+    grid-row:4;
+    grid-column: 4/span 1;
+}
+
+.inputs>*{
+    margin: 5px;
 }
 
 
