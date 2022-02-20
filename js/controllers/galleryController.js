@@ -1,6 +1,5 @@
 'use strict'
 
-var gNextId = 1
 var gImgs = [
     { id: 1, url: `assets/img/1.jpg`, keywords: [`funny`, `cat`] },
     { id: 2, url: `assets/img/2.jpg`, keywords: [`funny`, `cat`] },
