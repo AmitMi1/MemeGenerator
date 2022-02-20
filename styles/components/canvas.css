@@ -119,12 +119,12 @@ border-radius: 10px;
 
 .editor .inputs .share-btn{
     grid-row:4;
-    grid-column: 4/span 1;
+    grid-column: 5/span 1;
 }
 
 .editor .inputs .save-btn{
     grid-row:4;
-    grid-column: 5/span 1;
+    grid-column: 4/span 1;
 }
 
 .inputs>*{

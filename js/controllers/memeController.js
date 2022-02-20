@@ -8,7 +8,6 @@ var gIsSelected = false
 var gMoveStartPos
 var gData
 var gIsFirstRender = true
-var gIsLineSwitched
 var gSavedMemes = []
 var gIsStorageMeme = false
 var gId
@@ -132,12 +131,11 @@ function onUp() {
 }
 
 function _drawTextBorder(lineObj) {
-    var gradient = _getGardient()
     var lineWidth = lineObj.width
     var lineHeight = lineObj.size * 1.286
-    gCtx.strokeStyle = gradient
-    gCtx.lineWidth = 1
-    gCtx.fillStyle = 'rgba(0,0,0,0.15)'
+    gCtx.strokeStyle = 'black'
+    gCtx.lineWidth = 3
+    gCtx.fillStyle = 'rgba(255,255,255,0.25)'
     var rectXCord = lineObj.pos.x - (lineWidth / 2)
     if (lineObj.align === 'left')
         rectXCord += lineWidth / 2
@@ -145,14 +143,6 @@ function _drawTextBorder(lineObj) {
         rectXCord -= lineWidth / 2
     gCtx.strokeRect(rectXCord, lineObj.pos.y - (lineHeight / 2) - 10, lineWidth, lineHeight)
     gCtx.fillRect(rectXCord, lineObj.pos.y - (lineHeight / 2) - 10, lineWidth, lineHeight)
-}
-
-function _getGardient() {
-    var gradient = gCtx.createLinearGradient(0, 0, 170, 0)
-    gradient.addColorStop("0", "magenta")
-    gradient.addColorStop("0.5", "blue")
-    gradient.addColorStop("1.0", "red")
-    return gradient
 }
 
 function resizeCanvas() {
@@ -324,7 +314,6 @@ function renderSavedMemes() {
     var strHTMLs = ''
     gSavedMemes.forEach(meme => {
         var memeDataUrl = meme.imgData
-        var currMeme = meme.meme
         strHTMLs += `<img onclick="renderStorageMeme('${meme.id}')" src="${memeDataUrl}" alt=""></img>`
     })
     gIsFirstRender = true
