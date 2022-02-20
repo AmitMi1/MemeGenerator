@@ -207,6 +207,7 @@ function onDeleteLine() {
     gIsSelected = false
     renderMeme()
     _toggleInputs(true)
+    onSwitchLine()
 }
 
 function onSetLineText() {
