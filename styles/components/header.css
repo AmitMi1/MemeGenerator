@@ -27,9 +27,10 @@ border-radius: 50px;
     background-color: var(--clr3);
 }
 
-.main-nav>li {
+.main-nav li {
     width: 8.25em;
     text-align: center;
+    /* display: block; */
 }
 
 .main-nav-container {

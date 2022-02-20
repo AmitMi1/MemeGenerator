@@ -50,8 +50,9 @@
                     class="fa-solid fa-align-left"></i></button>
             <button class="text-align-btn center" onclick="onSetTextAlign('center')"><i
                     class="fa-solid fa-align-center"></i></button>
-            <input value="#ffffff" class="fill-input" type="color" oninput="onSetColor(this.value,'fill')">
-            <input class="stroke-input" type="color" oninput="onSetColor(this.value,'stroke')">
+            <input style="opacity: 0;" value="#ffffff" class="fill-input" type="color"
+                oninput="onSetColor(this.value,'fill')">
+            <input style="opacity: 0;" class="stroke-input" type="color" oninput="onSetColor(this.value,'stroke')">
             <select onchange="onSetFontType(this.value)" class="font-input">
                 <option selected value="font1">Impact</option>
                 <option value="font2">GideonRoman</option>
@@ -62,6 +63,8 @@
                         class="fa-solid fa-download"></i></a></button>
             <button class="share-btn" onclick="uploadImg()"><i class="fa-solid fa-share-nodes"></i></button>
             <button class="save-btn" onclick="onSaveToStorage()"><i class="fa-solid fa-floppy-disk"></i></button>
+            <button class="fill-input"><i class="fa-solid fa-palette"></i></button>
+            <button class="stroke-input"><i class="fa-solid fa-highlighter"></i></button>
         </div>
     </section>
     <section class="saved-memes">

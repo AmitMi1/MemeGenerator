@@ -8,6 +8,7 @@ height: 85vh;
 }
 
 .grid{
+    margin-top: 20px;
     grid-template-columns: repeat(auto-fit , 190px);
     grid-template-rows: repeat(auto-fit , 190px);
     justify-content: center;
@@ -15,9 +16,15 @@ height: 85vh;
     gap: 20px;
 }
 
-.grid>img{
+.grid img{
 width: 100%;
 cursor: pointer;
 border-radius: 20px;
 padding: 10px;
+}
+
+.grid img:hover{
+   transform: scale(1.1);
+
+   box-shadow: 0px 0px 7px 8px rgba(34,193,195,0.49);
 }

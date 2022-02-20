@@ -306,15 +306,17 @@ function _setDefaultText() {
 }
 
 function _toggleInputs(toggle) {
-    var fillInput = document.querySelector('.fill-input')
-    var strokeInput = document.querySelector('.stroke-input')
+    var fillInput = document.querySelectorAll('.fill-input')
+    var strokeInput = document.querySelectorAll('.stroke-input')
     var fontInput = document.querySelector('.font-input')
     var fontIncBtn = document.querySelector('.font-inc-btn')
     var fontDecBtn = document.querySelector('.font-dec-btn')
     var delLineBtn = document.querySelector('.del-line-btn')
     var textAlignBtn = document.querySelectorAll('.text-align-btn')
-    fillInput.disabled = toggle
-    strokeInput.disabled = toggle
+    // fillInput.disabled = toggle
+    // strokeInput.disabled = toggle
+    fillInput.forEach(input => input.disabled = toggle)
+    strokeInput.forEach(input => input.disabled = toggle)
     fontInput.disabled = toggle
     fontIncBtn.disabled = toggle
     fontDecBtn.disabled = toggle
