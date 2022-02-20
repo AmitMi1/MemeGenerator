@@ -101,7 +101,9 @@ function deleteLine() {
     gMeme.lines.splice(lineIdx, 1)
     if (gMeme.selectedLineIdx === -1) return
     gCurrLine--
-    gMeme.selectedLineIdx--
+    if (gMeme.selectedLineIdx > 0) {
+        gMeme.selectedLineIdx--
+    } else gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
 function setFontSize(sizeDiff) {
