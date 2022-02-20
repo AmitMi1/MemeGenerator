@@ -258,6 +258,7 @@ function initDownload() {
 
 function onDownload(elLink, ev) {
     ev.stopPropagation()
+    gIsSelected = false
     renderMeme()
     elLink.href = gData
     elLink.download = 'Meme'
