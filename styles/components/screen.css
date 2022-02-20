@@ -1,5 +1,4 @@
-.main-screen,
-.sec-screen {
+.main-screen{
     position: fixed;
     inset: 0;
     background-color: rgb(0 0 0 / 30%);
@@ -9,8 +8,7 @@
     transition: opacity .6s;
 }
 
-body.menu-open .main-screen,
-body.modal-open .sec-screen {
+body.menu-open .main-screen {
     pointer-events: auto;
     opacity: 1;
     z-index: 1;

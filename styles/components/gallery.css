@@ -7,30 +7,17 @@ overflow-y: scroll;
 height: 85vh;
 }
 
-
-
 .grid{
-    /* margin-top: 10px auto 0; */
-    /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
-    /* grid-template-rows: repeat(auto-fill, minmax(100px, 1fr)); */
-    /* grid-template-rows: repeat(auto-fit , 100px);     */
-    /* grid-auto-rows: 100px; */
-    /* grid-auto-flow: dense; */
     grid-template-columns: repeat(auto-fit , 190px);
     grid-template-rows: repeat(auto-fit , 190px);
-    /* justify-items: center; */
     justify-content: center;
     align-content: center;
     gap: 20px;
 }
 
 .grid>img{
-    /* margin: auto; */
-/* padding: 20px; */
 width: 100%;
 cursor: pointer;
 border-radius: 20px;
 padding: 10px;
-/* padding-inline-start: 10px; */
-/* aspect-ratio: 1/1; */
 }

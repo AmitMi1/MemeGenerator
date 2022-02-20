@@ -4,9 +4,6 @@
     background: linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(51,190,109,1) 100%);
    border-radius: 50px;
    margin-bottom: 20px;
-    /* background-color: var(--clr1); */
-    /* position: fixed; */
-    /* width: 100%; */
 }
 
 .main-header .logo img{
@@ -15,12 +12,11 @@
 }
 
 .main-nav li button{
-color: white;
+color: var(--clr3);
 font-size: 20px;
 background-color: rgba(255, 255, 255, 0);
 border: none;
 cursor: pointer;
-/* height: 40px; */
 padding: 10px;
 border-radius: 50px;
 }
@@ -29,17 +25,11 @@ border-radius: 50px;
     color: rgb(34,193,195);
     color: linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(51,190,109,1) 100%);
     background-color: rgb(255, 255, 255);
-    
-    }
+}
 
 .main-nav>li {
     width: 8.25em;
     text-align: center;
-    /* border-right: 1px solid black; */
-}
-
-.main-nav>li:first-child {
-    /* border-left: 1px solid black; */
 }
 
 .main-nav-container {
