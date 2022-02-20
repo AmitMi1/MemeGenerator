@@ -9,7 +9,11 @@ var gMoveStartPos
 var gData
 var gIsFirstRender = true
 var gIsLineSwitched
+var gSavedMemes = []
+var gIsStorageMeme = false
+var gId
 const DEFAULT_TEXT = 'Enter text here'
+const STORAGE_KEY = 'memesDB'
 
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
@@ -29,13 +33,16 @@ function onInit() {
 function renderMeme() {
     document.querySelector('.gallery').classList.add('hide')
     document.querySelector('.editor').classList.remove('hide')
+    document.querySelector('.saved-memes').classList.add('hide')
     var currMeme = getMeme()
     var img = new Image()
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         drawText(currMeme)
+        _getFocus(currMeme, currMeme.selectedLineIdx)
         if (gIsFirstRender) {
             _toggleInputs(true)
+            console.log('now')
             gIsFirstRender = false
         }
         if (gIsSelected) _drawTextBorder(currMeme.lines[currMeme.selectedLineIdx])
@@ -43,6 +50,13 @@ function renderMeme() {
     }
     img.src = `assets/img/${currMeme.selectedImgId}.jpg`
 }
+
+// function renderSavedMeme() {
+//     document.querySelector('.gallery').classList.add('hide')
+//     document.querySelector('.editor').classList.remove('hide')
+//     document.querySelector('.saved-memes').classList.add('hide')
+//     var currMeme = getMeme()
+// }
 
 function drawText(currMeme) {
     gCtx.lineWidth = 3
@@ -210,14 +224,14 @@ function onSetLineText() {
 
 function onSetFontSize(sizeDiff) {
     if (!gIsSelected) return
-    var meme = getMeme()
+    // var meme = getMeme()
     setFontSize(sizeDiff)
     renderMeme()
 }
 
 function onSetColor(color, colorType) {
     if (!gIsSelected) return
-    var meme = getMeme()
+    // var meme = getMeme()
     setColor(color, colorType)
     renderMeme()
 }
@@ -247,7 +261,6 @@ function onSetFontType(fontType) {
 
 function onSetTextAlign(align) {
     if (!gIsSelected) return
-    var meme = getMeme()
     setTextAlign(align)
     renderMeme()
 }
@@ -309,4 +322,52 @@ function _toggleInputs(toggle) {
     textAlignBtn.forEach(btn => {
         btn.disabled = toggle
     })
+}
+
+function renderSavedMemes() {
+    // debugger
+    gIsStorageMeme = true
+    document.querySelector('.gallery').classList.add('hide')
+    document.querySelector('.editor').classList.add('hide')
+    document.querySelector('.saved-memes').classList.remove('hide')
+    gSavedMemes = loadFromStorage(STORAGE_KEY)
+    if (!gSavedMemes) return
+    console.log(gSavedMemes)
+    var strHTMLs = ''
+    gSavedMemes.forEach(meme => {
+        var memeDataUrl = meme.imgData
+        var currMeme = meme.meme
+        console.log(currMeme)
+        strHTMLs += `<img onclick="renderStorageMeme('${meme.id}')" src="${memeDataUrl}" alt=""></img>`
+    })
+    gIsFirstRender = true
+    gIsSelected = false
+    document.querySelector('.saved-memes-container').innerHTML = strHTMLs
+}
+
+function renderStorageMeme(memeId) {
+    console.log(memeId)
+    gId = memeId
+    const storage_meme = gSavedMemes.find(meme => meme.id === memeId).meme
+    // storage_meme = storage_meme.meme
+    console.log(storage_meme)
+    gMeme = storage_meme
+    renderMeme()
+
+}
+
+function onSaveToStorage() {
+    var meme = getMeme()
+    // debugger
+    if (gIsStorageMeme) {
+        var memeIdx = gSavedMemes.findIndex(meme => meme.id === gId)
+        gSavedMemes.splice(memeIdx, 1)
+    }
+    gSavedMemes.push({
+        meme: meme,
+        imgData: gData,
+        id: makeId()
+    })
+    saveToStorage(STORAGE_KEY, gSavedMemes)
+    renderSavedMemes()
 }

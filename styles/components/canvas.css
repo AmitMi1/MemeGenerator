@@ -11,8 +11,10 @@ canvas {
 .editor .inputs{
     display: grid;
     gap: 5px;
-    grid-template-columns:1fr,1fr,1fr,1fr;
-    grid-template-rows: 1fr,1fr,1fr,1fr,1fr;
+    /* grid-template-columns:1fr,1fr,1fr,1fr; */
+    grid-template-columns:repeat(5,1fr);
+    grid-template-rows: repeat(5,1fr);
+    /* grid-template-rows: 1fr,1fr,1fr,1fr,1fr; */
     background-color: var(--clr2);
     margin-inline-start: 20px;
     padding: 10px;
@@ -41,12 +43,12 @@ border-radius: 10px;
 
 .editor .inputs .text-input{
     grid-row:1;
-    grid-column: 1/span 4;
+    grid-column: 1/span 5;
 }
 
 .editor .inputs .add-line-btn{
     grid-row:2;
-    grid-column: 1/span 1;
+    grid-column: 3/span 1;
     color: var(--clr3);
     background: rgb(66,235,92);
     background: radial-gradient(circle, rgba(66,235,92,1) 0%, rgba(101,197,61,1) 100%);
@@ -54,25 +56,25 @@ border-radius: 10px;
 
 .editor .inputs .del-line-btn{
     grid-row:2;
-    grid-column: 2/span 1;
+    grid-column: 4/span 1;
     color: var(--clr3);
     background: rgb(180,54,54);
     background: radial-gradient(circle, rgba(180,54,54,1) 0%, rgba(207,29,55,1) 100%);
 }
 
 .editor .inputs .font-inc-btn{
-    grid-row:2;
-    grid-column: 3/span 1;
-}
-
-.editor .inputs .font-dec-btn{
-    grid-row:2;
+    grid-row:3;
     grid-column: 4/span 1;
 }
 
-.editor .inputs .switch-line-btn{
+.editor .inputs .font-dec-btn{
     grid-row:3;
-    grid-column: 1/span 1;
+    grid-column: 5/span 1;
+}
+
+.editor .inputs .switch-line-btn{
+    grid-row:2;
+    grid-column: 2/span 1;
     color: var(--clr3);
     background: rgb(34,193,195);
     background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(102,196,220,1) 100%);
@@ -80,7 +82,7 @@ border-radius: 10px;
 
 .editor .inputs .font-input{
     grid-row:5;
-    grid-column: 1/span 4;
+    grid-column: 1/span 5;
 }
 
 .editor .inputs .stroke-input{
@@ -100,22 +102,27 @@ border-radius: 10px;
 
 .editor .inputs .text-align-btn.left{
     grid-row:3;
-    grid-column: 4/span 1;
+    grid-column: 3/span 1;
 }
 
 .editor .inputs .text-align-btn.right{
     grid-row:3;
-    grid-column: 2/span 1;
+    grid-column: 1/span 1;
 }
 
 .editor .inputs .text-align-btn.center{
     grid-row:3;
-    grid-column: 3/span 1;
+    grid-column: 2/span 1;
 }
 
 .editor .inputs .share-btn{
     grid-row:4;
     grid-column: 4/span 1;
+}
+
+.editor .inputs .save-btn{
+    grid-row:4;
+    grid-column: 5/span 1;
 }
 
 .inputs>*{

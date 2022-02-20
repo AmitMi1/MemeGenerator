@@ -24,11 +24,13 @@ var gImgs = [
 function renderGallery() {
     document.querySelector('.gallery').classList.remove('hide')
     document.querySelector('.editor').classList.add('hide')
+    document.querySelector('.saved-memes').classList.add('hide')
     var strHTMLs = gImgs.map(img => {
         return `<img src="${img.url}" onclick="setImg(${img.id})" class="img-${img.id}">`
     })
     document.querySelector('.gallery-container').innerHTML = strHTMLs.join('')
-    setTimeout(() => {
-        gIsFirstRender = true
-    })
+    // setTimeout(() => {
+    gIsFirstRender = true
+    gIsSelected = false
+    // })
 }

@@ -14,7 +14,7 @@
 .main-nav li button{
 color: var(--clr3);
 font-size: 20px;
-background-color: rgba(255, 255, 255, 0);
+background-color: transparent;
 border: none;
 cursor: pointer;
 padding: 10px;
@@ -24,7 +24,7 @@ border-radius: 50px;
 .main-nav li button:hover{
     color: rgb(34,193,195);
     color: linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(51,190,109,1) 100%);
-    background-color: rgb(255, 255, 255);
+    background-color: var(--clr3);
 }
 
 .main-nav>li {
