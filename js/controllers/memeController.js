@@ -321,12 +321,10 @@ function renderSavedMemes() {
     document.querySelector('.saved-memes').classList.remove('hide')
     gSavedMemes = loadFromStorage(STORAGE_KEY)
     if (!gSavedMemes) return
-    console.log(gSavedMemes)
     var strHTMLs = ''
     gSavedMemes.forEach(meme => {
         var memeDataUrl = meme.imgData
         var currMeme = meme.meme
-        console.log(currMeme)
         strHTMLs += `<img onclick="renderStorageMeme('${meme.id}')" src="${memeDataUrl}" alt=""></img>`
     })
     gIsFirstRender = true
@@ -335,10 +333,8 @@ function renderSavedMemes() {
 }
 
 function renderStorageMeme(memeId) {
-    console.log(memeId)
     gId = memeId
     const storage_meme = gSavedMemes.find(meme => meme.id === memeId).meme
-    console.log(storage_meme)
     gMeme = storage_meme
     renderMeme()
 }
