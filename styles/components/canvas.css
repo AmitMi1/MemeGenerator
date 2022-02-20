@@ -52,14 +52,17 @@ height: 50px;
 .editor .inputs .add-line-btn{
     grid-row:2;
     grid-column: 1/span 1;
-    /* background-color: rgba(0, 0, 0, 0); */
-    /* border: none; */
-    /* background-image: url(/assets/img/add.svg); */
+    color: white;
+    background: rgb(66,235,92);
+    background: radial-gradient(circle, rgba(66,235,92,1) 0%, rgba(101,197,61,1) 100%);
 }
 
 .editor .inputs .del-line-btn{
     grid-row:2;
     grid-column: 2/span 1;
+    color: white;
+    background: rgb(180,54,54);
+    background: radial-gradient(circle, rgba(180,54,54,1) 0%, rgba(207,29,55,1) 100%);
 }
 
 .editor .inputs .font-inc-btn{
@@ -75,6 +78,9 @@ height: 50px;
 .editor .inputs .switch-line-btn{
     grid-row:3;
     grid-column: 1/span 1;
+    color: white;
+    background: rgb(34,193,195);
+    background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(102,196,220,1) 100%);
 }
 
 .editor .inputs .font-input{

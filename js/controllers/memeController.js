@@ -27,7 +27,6 @@ function onInit() {
 
 function renderMeme() {
     document.querySelector('.gallery').classList.add('hide')
-    // document.querySelector('#about').classList.remove('hide')
     document.querySelector('.editor').classList.remove('hide')
     var currMeme = getMeme()
     var img = new Image()
@@ -35,7 +34,6 @@ function renderMeme() {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         drawText(currMeme)
         if (gIsFirstRender) {
-            // document.querySelector('canvas').click()
             _toggleInputs(true)
             gIsFirstRender = false
         }
@@ -62,7 +60,6 @@ function addListeners() {
     addTouchListeners()
     window.addEventListener('resize', () => {
         resizeCanvas()
-        // renderMeme()
     })
 }
 
@@ -80,7 +77,6 @@ function addTouchListeners() {
 }
 
 function onDown(ev) {
-    // ev.stopPropagation()
     renderMeme()
     _setDefaultText()
     _toggleInputs(true)
@@ -144,7 +140,6 @@ function _drawTextBorder(lineObj) {
         rectXCord -= lineWidth / 2
     gCtx.strokeRect(rectXCord, lineObj.pos.y - (lineHeight / 2) - 10, lineWidth, lineHeight)
     gCtx.fillRect(rectXCord, lineObj.pos.y - (lineHeight / 2) - 10, lineWidth, lineHeight)
-    // _toggleInputs(false)
 }
 
 function _getGardient() {
@@ -156,9 +151,6 @@ function _getGardient() {
 }
 
 function resizeCanvas() {
-    console.log(gIsFirstRender)
-    const elContainer = document.querySelector('.gallery')
-    // console.log(elContainer.offsetWidth)
     var viewPortWidth = document.documentElement.clientWidth
     if (viewPortWidth > 1000) {
         gCanvas.width = viewPortWidth * 0.325
@@ -201,6 +193,7 @@ function onAddLine() {
     setTimeout(() => {
         _drawTextBorder(meme.lines[meme.selectedLineIdx])
     })
+    _toggleInputs(false)
 }
 
 function onDeleteLine() {
