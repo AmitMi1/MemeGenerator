@@ -38,11 +38,11 @@ function renderMeme() {
     var img = new Image()
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-        drawText(currMeme)
-        _getFocus(currMeme, currMeme.selectedLineIdx)
+        if (currMeme.lines.length) {
+            drawText(currMeme)
+        }
         if (gIsFirstRender) {
             _toggleInputs(true)
-            console.log('now')
             gIsFirstRender = false
         }
         if (gIsSelected) _drawTextBorder(currMeme.lines[currMeme.selectedLineIdx])
@@ -50,13 +50,6 @@ function renderMeme() {
     }
     img.src = `assets/img/${currMeme.selectedImgId}.jpg`
 }
-
-// function renderSavedMeme() {
-//     document.querySelector('.gallery').classList.add('hide')
-//     document.querySelector('.editor').classList.remove('hide')
-//     document.querySelector('.saved-memes').classList.add('hide')
-//     var currMeme = getMeme()
-// }
 
 function drawText(currMeme) {
     gCtx.lineWidth = 3
@@ -218,20 +211,17 @@ function onDeleteLine() {
 
 function onSetLineText() {
     if (!gIsSelected) return
-    var meme = getMeme()
     setLineText()
 }
 
 function onSetFontSize(sizeDiff) {
     if (!gIsSelected) return
-    // var meme = getMeme()
     setFontSize(sizeDiff)
     renderMeme()
 }
 
 function onSetColor(color, colorType) {
     if (!gIsSelected) return
-    // var meme = getMeme()
     setColor(color, colorType)
     renderMeme()
 }
@@ -255,7 +245,6 @@ function onSetFontType(fontType) {
     if (!gIsSelected) return
     setFontType(fontType)
     renderMeme()
-    var meme = getMeme()
     _toggleInputs(false)
 }
 
@@ -273,8 +262,10 @@ function onDownload(elLink, ev) {
     ev.stopPropagation()
     gIsSelected = false
     renderMeme()
-    elLink.href = gData
-    elLink.download = 'Meme'
+    setTimeout(() => {
+        elLink.href = gData
+        elLink.download = 'Meme'
+    })
 }
 
 function getCanvas() {
@@ -313,8 +304,6 @@ function _toggleInputs(toggle) {
     var fontDecBtn = document.querySelector('.font-dec-btn')
     var delLineBtn = document.querySelector('.del-line-btn')
     var textAlignBtn = document.querySelectorAll('.text-align-btn')
-    // fillInput.disabled = toggle
-    // strokeInput.disabled = toggle
     fillInput.forEach(input => input.disabled = toggle)
     strokeInput.forEach(input => input.disabled = toggle)
     fontInput.disabled = toggle
@@ -327,7 +316,6 @@ function _toggleInputs(toggle) {
 }
 
 function renderSavedMemes() {
-    // debugger
     gIsStorageMeme = true
     document.querySelector('.gallery').classList.add('hide')
     document.querySelector('.editor').classList.add('hide')
@@ -351,16 +339,13 @@ function renderStorageMeme(memeId) {
     console.log(memeId)
     gId = memeId
     const storage_meme = gSavedMemes.find(meme => meme.id === memeId).meme
-    // storage_meme = storage_meme.meme
     console.log(storage_meme)
     gMeme = storage_meme
     renderMeme()
-
 }
 
 function onSaveToStorage() {
     var meme = getMeme()
-    // debugger
     if (gIsStorageMeme) {
         var memeIdx = gSavedMemes.findIndex(meme => meme.id === gId)
         gSavedMemes.splice(memeIdx, 1)

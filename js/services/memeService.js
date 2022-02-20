@@ -26,11 +26,6 @@ function getMeme() {
     return gMeme
 }
 
-function setMeme(imgId, imgDataUrl) {
-    gMeme.selectedImgId = imgId
-    // renderMeme()
-}
-
 function setImg(imgId) {
     initMeme(imgId)
     gIsStorageMeme = false

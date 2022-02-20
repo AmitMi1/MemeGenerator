@@ -6,13 +6,10 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--clr1);
-    /* overflow: hidden; */
 }
 
 html {
-    /* color: var(--clr5); */
     font-family: font3;
-    /* line-height: 1.25; */
     overflow-x: hidden;
 }
 
