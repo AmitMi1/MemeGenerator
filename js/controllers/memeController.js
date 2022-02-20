@@ -140,8 +140,6 @@ function _drawTextBorder(lineObj) {
         rectXCord -= lineWidth / 2
     gCtx.strokeRect(rectXCord, lineObj.pos.y - (lineHeight / 2) - 10, lineWidth, lineHeight)
     gCtx.fillRect(rectXCord, lineObj.pos.y - (lineHeight / 2) - 10, lineWidth, lineHeight)
-    var meme = getMeme()
-    _getFocus(meme, meme.selectedLineIdx)
 }
 
 function _getGardient() {
@@ -204,8 +202,6 @@ function onDeleteLine() {
     gIsSelected = false
     renderMeme()
     _toggleInputs(true)
-    var meme = getMeme()
-    _setDefaultText()
 }
 
 function onSetLineText() {
@@ -225,7 +221,6 @@ function onSetFontSize(sizeDiff) {
     setTimeout(() => {
         _drawTextBorder(meme.lines[meme.selectedLineIdx])
     })
-
 }
 
 function onSetColor(color, colorType) {
