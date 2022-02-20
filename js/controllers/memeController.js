@@ -8,6 +8,7 @@ var gIsSelected = false
 var gMoveStartPos
 var gData
 var gIsFirstRender = true
+var gIsLineSwitched
 const DEFAULT_TEXT = 'Enter text here'
 
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
@@ -37,6 +38,7 @@ function renderMeme() {
             _toggleInputs(true)
             gIsFirstRender = false
         }
+        if (gIsSelected) _drawTextBorder(currMeme.lines[currMeme.selectedLineIdx])
         gData = gCanvas.toDataURL()
     }
     img.src = `assets/img/${currMeme.selectedImgId}.jpg`
@@ -77,27 +79,28 @@ function addTouchListeners() {
 }
 
 function onDown(ev) {
-    renderMeme()
-    _setDefaultText()
-    _toggleInputs(true)
     const pos = getEvPos(ev)
-    var textIdx = getText(pos)
-    if (textIdx < 0) return
     var meme = getMeme()
+    if (!meme.lines.length) return
+    var textIdx = getText(pos)
+    if (textIdx < 0) {
+        _setDefaultText()
+        _toggleInputs(true)
+        renderMeme()
+        return
+    }
     meme.selectedLineIdx = textIdx;
     gIsMove = true
     gMoveStartPos = pos
-    setTimeout(() => {
-        _getFocus(meme, textIdx)
-        _drawTextBorder(meme.lines[meme.selectedLineIdx])
-    })
+    gIsSelected = true
+    _getFocus(meme, textIdx)
+    renderMeme()
     document.body.style.cursor = 'grabbing'
 }
 
 function onMove(ev) {
     ev.stopPropagation()
     if (!gIsMove) return
-
     var pos = getEvPos(ev)
     var meme = getMeme()
     var xDiff = pos.x - gMoveStartPos.x
@@ -106,11 +109,7 @@ function onMove(ev) {
     meme.lines[meme.selectedLineIdx].pos.y += yDiff
     gMoveStartPos = pos
     renderMeme()
-    setTimeout(() => {
-        _drawTextBorder(meme.lines[meme.selectedLineIdx])
-        _toggleInputs(true)
-    })
-
+    _toggleInputs(true)
 }
 
 function onUp() {
@@ -126,7 +125,6 @@ function onUp() {
 }
 
 function _drawTextBorder(lineObj) {
-    gIsSelected = true
     var gradient = _getGardient()
     var lineWidth = lineObj.width
     var lineHeight = lineObj.size * 1.286
@@ -158,9 +156,12 @@ function resizeCanvas() {
     } else if (viewPortWidth > 740) {
         gCanvas.width = viewPortWidth * 0.5
         gCanvas.height = viewPortWidth * 0.5
+    } else if (viewPortWidth > 500) {
+        gCanvas.width = viewPortWidth * 0.6
+        gCanvas.height = viewPortWidth * 0.6
     } else {
-        gCanvas.width = viewPortWidth * 0.725
-        gCanvas.height = viewPortWidth * 0.725
+        gCanvas.width = viewPortWidth * 0.85
+        gCanvas.height = viewPortWidth * 0.85
     }
     if (!gIsFirstRender) {
         renderMeme()
@@ -184,15 +185,12 @@ function getEvPos(ev) {
 }
 
 function onAddLine() {
-    _setDefaultText()
     addLine()
     var meme = getMeme()
     var textIdx = getCurrLine()
     _getFocus(meme, textIdx)
+    gIsSelected = true
     renderMeme()
-    setTimeout(() => {
-        _drawTextBorder(meme.lines[meme.selectedLineIdx])
-    })
     _toggleInputs(false)
 }
 
@@ -208,9 +206,6 @@ function onSetLineText() {
     if (!gIsSelected) return
     var meme = getMeme()
     setLineText()
-    setTimeout(() => {
-        _drawTextBorder(meme.lines[meme.selectedLineIdx])
-    })
 }
 
 function onSetFontSize(sizeDiff) {
@@ -218,9 +213,6 @@ function onSetFontSize(sizeDiff) {
     var meme = getMeme()
     setFontSize(sizeDiff)
     renderMeme()
-    setTimeout(() => {
-        _drawTextBorder(meme.lines[meme.selectedLineIdx])
-    })
 }
 
 function onSetColor(color, colorType) {
@@ -228,21 +220,19 @@ function onSetColor(color, colorType) {
     var meme = getMeme()
     setColor(color, colorType)
     renderMeme()
-    setTimeout(() => {
-        _drawTextBorder(meme.lines[meme.selectedLineIdx])
-    })
 }
 
 function onSwitchLine() {
     var meme = getMeme()
-    var linesLength = meme.lines.length - 1
+    var linesLength = meme.lines.length
+    if (!linesLength) return
     var lineIdx = meme.selectedLineIdx
-    lineIdx === linesLength ? lineIdx = 0 : lineIdx++
-    var ev = {
-        offsetX: meme.lines[lineIdx].pos.x,
-        offsetY: meme.lines[lineIdx].pos.y
-    }
-    onDown(ev)
+    lineIdx++
+    if (lineIdx === linesLength) lineIdx = 0
+    gIsSelected = true
+    meme.selectedLineIdx = lineIdx
+    renderMeme()
+    _getFocus(meme, meme.selectedLineIdx)
     gIsMove = false
     _toggleInputs(false)
 }
@@ -252,10 +242,7 @@ function onSetFontType(fontType) {
     setFontType(fontType)
     renderMeme()
     var meme = getMeme()
-    setTimeout(() => {
-        _drawTextBorder(meme.lines[meme.selectedLineIdx])
-        _toggleInputs(false)
-    })
+    _toggleInputs(false)
 }
 
 function onSetTextAlign(align) {
@@ -263,9 +250,6 @@ function onSetTextAlign(align) {
     var meme = getMeme()
     setTextAlign(align)
     renderMeme()
-    setTimeout(() => {
-        _drawTextBorder(meme.lines[meme.selectedLineIdx])
-    })
 }
 
 function initDownload() {
