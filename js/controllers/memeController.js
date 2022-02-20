@@ -262,10 +262,8 @@ function onDownload(elLink, ev) {
     ev.stopPropagation()
     gIsSelected = false
     renderMeme()
-    setTimeout(() => {
-        elLink.href = gData
-        elLink.download = 'Meme'
-    })
+    elLink.href = gData
+    elLink.download = 'Meme'
 }
 
 function getCanvas() {
