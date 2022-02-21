@@ -56,3 +56,12 @@
         margin-block-start: 20px;
     }
 }
+@media (max-width: 440px) {
+    .editor .inputs{
+        margin-inline-start: 0px;
+        margin-block-start: 7px;
+    }
+    .main-header {
+        margin-bottom: 10px ;
+    }
+}
