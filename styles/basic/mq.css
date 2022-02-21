@@ -60,9 +60,9 @@
     .editor .inputs{
         margin-inline-start: 0px;
         margin-block-start: 5px;
-        gap: 1px
+        gap: 0px
     }
     .main-header {
-        margin-bottom: 5px ;
+        margin-bottom: 10px ;
     }
 }
