@@ -60,6 +60,7 @@
     .editor .inputs{
         margin-inline-start: 0px;
         margin-block-start: 7px;
+        gap: 1px
     }
     .main-header {
         margin-bottom: 10px ;
