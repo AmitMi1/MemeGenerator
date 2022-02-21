@@ -19,7 +19,7 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 function onInit() {
     gCanvas = document.querySelector('canvas')
     gCtx = gCanvas.getContext('2d')
-    initMeme(1)
+    initMeme(0)
     renderMeme()
     setTimeout(() => {
         gIsFirstRender = true
