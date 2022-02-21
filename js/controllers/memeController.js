@@ -10,7 +10,7 @@ var gData
 var gIsFirstRender = true
 var gSavedMemes = []
 var gIsStorageMeme = false
-var gId
+var gCurrId
 const DEFAULT_TEXT = 'Enter text here'
 const STORAGE_KEY = 'memesDB'
 
@@ -153,12 +153,15 @@ function resizeCanvas() {
     } else if (viewPortWidth > 740) {
         gCanvas.width = viewPortWidth * 0.5
         gCanvas.height = viewPortWidth * 0.5
-    } else if (viewPortWidth > 500) {
+    } else if (viewPortWidth > 640) {
         gCanvas.width = viewPortWidth * 0.6
         gCanvas.height = viewPortWidth * 0.6
+    } else if (viewPortWidth > 440) {
+        gCanvas.width = viewPortWidth * 0.75
+        gCanvas.height = viewPortWidth * 0.75
     } else {
-        gCanvas.width = viewPortWidth * 0.85
-        gCanvas.height = viewPortWidth * 0.85
+        gCanvas.width = viewPortWidth * 0.95
+        gCanvas.height = viewPortWidth * 0.95
     }
     if (!gIsFirstRender) {
         renderMeme()
@@ -322,7 +325,7 @@ function renderSavedMemes() {
 }
 
 function renderStorageMeme(memeId) {
-    gId = memeId
+    gCurrId = memeId
     const storage_meme = gSavedMemes.find(meme => meme.id === memeId).meme
     gMeme = storage_meme
     renderMeme()
@@ -331,7 +334,7 @@ function renderStorageMeme(memeId) {
 function onSaveToStorage() {
     var meme = getMeme()
     if (gIsStorageMeme) {
-        var memeIdx = gSavedMemes.findIndex(meme => meme.id === gId)
+        var memeIdx = gSavedMemes.findIndex(meme => meme.id === gCurrId)
         gSavedMemes.splice(memeIdx, 1)
     }
     gSavedMemes.push({

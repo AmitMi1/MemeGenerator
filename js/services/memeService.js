@@ -42,7 +42,6 @@ function setLineText() {
 }
 
 function getText(clickPos) {
-    var ctx = getCanvas().getContext('2d')
     var textIdx
     var align = gMeme.lines[gMeme.selectedLineIdx].align
     return gMeme.lines.findIndex(line => {
