@@ -58,9 +58,8 @@
 }
 @media (max-width: 440px) {
     .editor .inputs{
-        margin-inline-start: 0px;
-        margin-block-start: 5px;
-        gap: 0px
+        margin-block-start: 10px;
+        gap: 3px
     }
     .main-header {
         margin-bottom: 10px ;
